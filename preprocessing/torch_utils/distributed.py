@@ -26,7 +26,7 @@ def init():
             os.environ['MASTER_ADDR'] = 'localhost'
         if 'MASTER_PORT' not in os.environ:
             s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            s.bind(('', 0))
+            s.bind(('localhost', 0))  # Bind to localhost to limit exposure
             s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
             os.environ['MASTER_PORT'] = str(s.getsockname()[1])
             s.close()
